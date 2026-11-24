@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#4b2e1b"/>
+  <rect x="52" y="52" width="408" height="408" rx="48" fill="#d9a773" stroke="#8b5a2b" stroke-width="24"/>
+  <path d="M52 180 H320 V332 H180" fill="none" stroke="#8b5a2b" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M332 52 V180 M180 332 V460" fill="none" stroke="#8b5a2b" stroke-width="32" stroke-linecap="round"/>
+  <circle cx="256" cy="256" r="56" fill="url(#steel)"/>
+  <defs>
+    <radialGradient id="steel" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="55%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </radialGradient>
+  </defs>
+</svg>

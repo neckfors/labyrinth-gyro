@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Labyrinth PWA — Visual Mockups</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --card: #181b22;
+      --border: #2a2f3a;
+      --text: #eef1f6;
+      --muted: #98a2b3;
+      --accent: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 20px 16px 48px;
+      line-height: 1.5;
+    }
+    header {
+      max-width: 1120px;
+      margin: 0 auto 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+    }
+    h1 { font-size: 1.45rem; font-weight: 700; letter-spacing: -0.02em; }
+    .subtitle { color: var(--muted); font-size: 0.92rem; margin-top: 4px; }
+    .controls-hint {
+      background: #202530;
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      color: #d0d7e2;
+    }
+    .grid {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    }
+    .card-header {
+      padding: 14px 16px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .card-title { font-weight: 700; font-size: 1.05rem; }
+    .badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(245, 158, 11, 0.14);
+      color: var(--accent);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .card-desc {
+      padding: 0 16px 12px;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+    .phone-frame {
+      margin: 0 16px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 3px solid #2b313d;
+      background: #090b0e;
+      position: relative;
+      aspect-ratio: 9 / 14;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .hud-preview {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .pill {
+      background: rgba(10, 12, 16, 0.72);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 4px 9px;
+      border-radius: 999px;
+      color: #f3f4f6;
+    }
+    .card-footer {
+      padding: 12px 16px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    button {
+      background: var(--accent);
+      color: #111;
+      border: none;
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: transform 0.1s ease, filter 0.15s ease;
+    }
+    button:hover { filter: brightness(1.08); }
+    button:active { transform: scale(0.97); }
+    .specs {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Labyrinth Gyro PWA — Visual Mockups</h1>
+      <p class="subtitle">Three "real labyrinth" art directions with 3D-style wall depth, balanced ball-to-corridor scale, and height-scaled jumping.</p>
+    </div>
+    <div class="controls-hint">
+      Click/tap any preview or press <strong>Space</strong> to trigger a jump
+    </div>
+  </header>
+
+  <main class="grid">
+    <!-- Mockup 1: Ancient Stone & Brass -->
+    <section class="card">
+      <div class="card-header">
+        <span class="card-title">A. Ancient Stone &amp; Brass</span>
+        <span class="badge">Recommended</span>
+      </div>
+      <p class="card-desc">Chiseled stone walls with warm top bevels, mossy flagstones, spiked chasms, and a polished brass sphere.</p>
+      <div class="phone-frame" data-theme="stone">
+        <canvas width="360" height="560"></canvas>
+        <div class="hud-preview">
+          <span class="pill">LVL 4 · 00:28</span>
+          <span class="pill">⚡ GYRO ON</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="specs">Corridor: 1.75× ball · Chasms + Spikes</span>
+        <button data-jump="stone">Jump Preview</button>
+      </div>
+    </section>
+
+    <!-- Mockup 2: Classic Wood & Steel -->
+    <section class="card">
+      <div class="card-header">
+        <span class="card-title">B. Classic Wood &amp; Steel</span>
+        <span class="badge">Tabletop</span>
+      </div>
+      <p class="card-desc">Tactile Brio-style oiled oak board, chamfered wooden walls, deep pit holes, and a chrome steel ball bearing.</p>
+      <div class="phone-frame" data-theme="wood">
+        <canvas width="360" height="560"></canvas>
+        <div class="hud-preview">
+          <span class="pill">LVL 4 · 00:28</span>
+          <span class="pill">⚡ GYRO ON</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="specs">Corridor: 1.75× ball · Pits + Hurdles</span>
+        <button data-jump="wood">Jump Preview</button>
+      </div>
+    </section>
+
+    <!-- Mockup 3: Torchlit Temple -->
+    <section class="card">
+      <div class="card-header">
+        <span class="card-title">C. Torchlit Obsidian Temple</span>
+        <span class="badge">Atmospheric</span>
+      </div>
+      <p class="card-desc">Dark carved basalt labyrinth lit by a warm moving aura around the orb, with glowing lava trenches to leap over.</p>
+      <div class="phone-frame" data-theme="temple">
+        <canvas width="360" height="560"></canvas>
+        <div class="hud-preview">
+          <span class="pill">LVL 4 · 00:28</span>
+          <span class="pill">⚡ GYRO ON</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="specs">Corridor: 1.75× ball · Lava + Barriers</span>
+        <button data-jump="temple">Jump Preview</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Simple 7x11 maze layout (1 = wall, 0 = floor, 2 = spike/hurdle obstacle, 3 = pit/lava gap, 4 = goal)
+    const MAZE = [
+      [1,1,1,1,1,1,1],
+      [1,0,0,0,1,4,1],
+      [1,0,1,2,1,0,1],
+      [1,0,1,0,0,0,1],
+      [1,3,1,1,1,2,1],
+      [1,0,0,0,3,0,1],
+      [1,1,1,0,1,0,1],
+      [1,0,2,0,1,0,1],
+      [1,0,1,1,1,0,1],
+      [1,0,0,0,0,0,1],
+      [1,1,1,1,1,1,1]
+    ];
+
+    // Pre-recorded smooth demo path looping through the labyrinth (col, row, shouldJump)
+    const PATH = [
+      [1.5, 9.5, false],
+      [3.5, 9.5, false],
+      [5.5, 9.5, false],
+      [5.5, 5.5, false],
+      [4.5, 5.5, true],   // jump over pit at (4,5)
+      [3.5, 5.5, false],
+      [3.5, 7.5, false],
+      [2.5, 7.5, true],   // jump over spike/hurdle at (2,7)
+      [1.5, 7.5, false],
+      [1.5, 5.5, false],
+      [1.5, 4.5, true],   // jump over pit at (1,4)
+      [1.5, 1.5, false],
+      [3.5, 1.5, false],
+      [3.5, 2.5, true],   // jump over spike at (3,2)
+      [3.5, 3.5, false],
+      [5.5, 3.5, false],
+      [5.5, 1.5, false],  // goal!
+    ];
+
+    const THEMES = {
+      stone: {
+        bg: '#1c2026',
+        tileA: '#363d47',
+        tileB: '#313741',
+        grout: '#22262e',
+        wallTop: '#6b7280',
+        wallHighlight: '#9ca3af',
+        wallSide: '#374151',
+        wallShadow: 'rgba(0,0,0,0.52)',
+        ballColors: ['#fff6d1', '#f59e0b', '#92400e'],
+        obstacleType: 'spikes',
+        pitColor: '#0b0d11',
+        pitRim: '#4b5563',
+        goalColor: '#34d399',
+        torch: false
+      },
+      wood: {
+        bg: '#4b2e1b',
+        tileA: '#d9a773',
+        tileB: '#cfa06b',
+        grout: '#b8844f',
+        wallTop: '#8b5a2b',
+        wallHighlight: '#b97f45',
+        wallSide: '#543215',
+        wallShadow: 'rgba(35,18,5,0.48)',
+        ballColors: ['#ffffff', '#cbd5e1', '#475569'],
+        obstacleType: 'hurdle',
+        pitColor: '#160d06',
+        pitRim: '#6d411c',
+        goalColor: '#22c55e',
+        torch: false
+      },
+      temple: {
+        bg: '#0c0d12',
+        tileA: '#1d202b',
+        tileB: '#181a24',
+        grout: '#10121a',
+        wallTop: '#33394d',
+        wallHighlight: '#505975',
+        wallSide: '#181b26',
+        wallShadow: 'rgba(0,0,0,0.68)',
+        ballColors: ['#d1fae5', '#10b981', '#064e3b'],
+        obstacleType: 'lava_bar',
+        pitColor: '#ea580c',
+        pitRim: '#7c2d12',
+        goalColor: '#38bdf8',
+        torch: true
+      }
+    };
+
+    const instances = [];
+
+    document.querySelectorAll('.phone-frame').forEach(frame => {
+      const themeKey = frame.dataset.theme;
+      const canvas = frame.querySelector('canvas');
+      const ctx = canvas.getContext('2d');
+      const state = {
+        themeKey,
+        theme: THEMES[themeKey],
+        canvas,
+        ctx,
+        t: 0,
+        manualJumpZ: 0,
+        manualJumpVel: 0,
+        autoJumpZ: 0
+      };
+      frame.addEventListener('click', () => triggerJump(state));
+      instances.push(state);
+    });
+
+    document.querySelectorAll('button[data-jump]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const inst = instances.find(i => i.themeKey === btn.dataset.jump);
+        if (inst) triggerJump(inst);
+      });
+    });
+
+    window.addEventListener('keydown', e => {
+      if (e.code === 'Space') {
+        e.preventDefault();
+        instances.forEach(triggerJump);
+      }
+    });
+
+    function triggerJump(state) {
+      if (state.manualJumpZ <= 0.01) {
+        state.manualJumpVel = 0.22;
+      }
+    }
+
+    function getBallState(t) {
+      const totalSegs = PATH.length - 1;
+      const speed = 0.9; // segments per second
+      const raw = (t * speed) % (totalSegs + 1.5);
+      if (raw >= totalSegs) {
+        const last = PATH[PATH.length - 1];
+        return { x: last[0], y: last[1], autoZ: 0 };
+      }
+      const idx = Math.floor(raw);
+      const frac = raw - idx;
+      const a = PATH[idx];
+      const b = PATH[idx + 1];
+      const x = a[0] + (b[0] - a[0]) * frac;
+      const y = a[1] + (b[1] - a[1]) * frac;
+      // Parabolic jump arc when segment crosses an obstacle
+      const autoZ = a[2] ? Math.sin(frac * Math.PI) * 1.0 : 0;
+      return { x, y, autoZ };
+    }
+
+    function drawRoundedRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.roundRect(x, y, w, h, r);
+      ctx.fill();
+    }
+
+    function renderInstance(state, dt) {
+      const { ctx, canvas, theme } = state;
+      const W = canvas.width;
+      const H = canvas.height;
+      const cols = MAZE[0].length;
+      const rows = MAZE.length;
+      const padX = 14;
+      const padY = 48;
+      const cell = Math.floor(Math.min((W - padX * 2) / cols, (H - padY - 18) / rows));
+      const ox = Math.floor((W - cell * cols) / 2);
+      const oy = Math.floor((H - cell * rows) / 2) + 12;
+
+      // Physics for manual jump
+      if (state.manualJumpZ > 0 || state.manualJumpVel > 0) {
+        state.manualJumpZ += state.manualJumpVel * (dt * 60);
+        state.manualJumpVel -= 0.014 * (dt * 60);
+        if (state.manualJumpZ <= 0) {
+          state.manualJumpZ = 0;
+          state.manualJumpVel = 0;
+        }
+      }
+
+      ctx.fillStyle = theme.bg;
+      ctx.fillRect(0, 0, W, H);
+
+      // 1. Floor tiles
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const x = ox + c * cell;
+          const y = oy + r * cell;
+          const v = MAZE[r][c];
+          if (v === 1) continue;
+
+          ctx.fillStyle = (r + c) % 2 === 0 ? theme.tileA : theme.tileB;
+          ctx.fillRect(x, y, cell, cell);
+          ctx.strokeStyle = theme.grout;
+          ctx.lineWidth = 1;
+          ctx.strokeRect(x + 0.5, y + 0.5, cell - 1, cell - 1);
+
+          // Pit / Lava gap
+          if (v === 3) {
+            ctx.fillStyle = theme.pitRim;
+            drawRoundedRect(ctx, x + 5, y + 5, cell - 10, cell - 10, 8);
+            ctx.fillStyle = theme.pitColor;
+            drawRoundedRect(ctx, x + 8, y + 8, cell - 16, cell - 16, 6);
+            if (state.themeKey === 'temple') {
+              ctx.fillStyle = 'rgba(253, 224, 71, 0.35)';
+              drawRoundedRect(ctx, x + 13, y + 13, cell - 26, cell - 26, 4);
+            }
+          }
+
+          // Spikes / Hurdles
+          if (v === 2) {
+            if (theme.obstacleType === 'spikes') {
+              ctx.fillStyle = '#94a3b8';
+              for (let i = 0; i < 3; i++) {
+                const sx = x + 10 + i * 11;
+                const sy = y + cell * 0.65;
+                ctx.beginPath();
+                ctx.moveTo(sx, sy);
+                ctx.lineTo(sx + 5, sy - 14);
+                ctx.lineTo(sx + 10, sy);
+                ctx.closePath();
+                ctx.fill();
+              }
+            } else if (theme.obstacleType === 'hurdle') {
+              ctx.fillStyle = 'rgba(0,0,0,0.3)';
+              drawRoundedRect(ctx, x + 6, y + cell * 0.45 + 4, cell - 12, 9, 4);
+              ctx.fillStyle = '#ef4444';
+              drawRoundedRect(ctx, x + 6, y + cell * 0.42, cell - 12, 8, 4);
+            } else {
+              ctx.fillStyle = '#f97316';
+              ctx.shadowColor = '#f97316';
+              ctx.shadowBlur = 10;
+              drawRoundedRect(ctx, x + 6, y + cell * 0.44, cell - 12, 7, 3);
+              ctx.shadowBlur = 0;
+            }
+          }
+
+          // Goal portal
+          if (v === 4) {
+            const pulse = 0.75 + Math.sin(state.t * 4) * 0.15;
+            ctx.save();
+            ctx.strokeStyle = theme.goalColor;
+            ctx.lineWidth = 3;
+            ctx.globalAlpha = pulse;
+            ctx.beginPath();
+            ctx.arc(x + cell / 2, y + cell / 2, cell * 0.28, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.fillStyle = theme.goalColor;
+            ctx.globalAlpha = 0.25;
+            ctx.fill();
+            ctx.restore();
+          }
+        }
+      }
+
+      // 2. Wall drop shadows
+      const wallDepth = 8;
+      ctx.fillStyle = theme.wallShadow;
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          if (MAZE[r][c] !== 1) continue;
+          const x = ox + c * cell;
+          const y = oy + r * cell;
+          ctx.fillRect(x + 4, y + 6, cell, cell);
+        }
+      }
+
+      // 3. 3D-style raised walls (side + top + highlight)
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          if (MAZE[r][c] !== 1) continue;
+          const x = ox + c * cell;
+          const y = oy + r * cell;
+          // Front bevel
+          ctx.fillStyle = theme.wallSide;
+          ctx.fillRect(x, y, cell, cell);
+          // Top face shifted up
+          ctx.fillStyle = theme.wallTop;
+          ctx.fillRect(x, y - wallDepth, cell, cell);
+          // Top edge highlight
+          ctx.fillStyle = theme.wallHighlight;
+          ctx.fillRect(x, y - wallDepth, cell, 3);
+        }
+      }
+
+      // 4. Ball + realistic jump scaling & shadow separation
+      const b = getBallState(state.t);
+      const bx = ox + b.x * cell;
+      const by = oy + b.y * cell;
+      const z = Math.min(1.25, b.autoZ + state.manualJumpZ);
+
+      // Base radius: corridor is ~1.75x ball diameter (radius = cell / 3.5)
+      const baseR = cell * 0.285;
+      const jumpScale = 1 + z * 0.58; // Ball visibly grows larger when jumping!
+      const drawR = baseR * jumpScale;
+      const liftY = z * 16; // Slight vertical lift toward camera
+
+      // Floor shadow (stays on floor, shrinks & softens as ball rises)
+      ctx.save();
+      ctx.fillStyle = `rgba(0, 0, 0, ${Math.max(0.18, 0.48 - z * 0.22)})`;
+      ctx.beginPath();
+      ctx.ellipse(
+        bx + 3 + z * 8,
+        by + 4 + z * 10,
+        baseR * (1 - z * 0.18),
+        baseR * (0.85 - z * 0.15),
+        0, 0, Math.PI * 2
+      );
+      ctx.fill();
+      ctx.restore();
+
+      // Ball sphere with 3D radial gradient
+      const drawY = by - liftY;
+      const grad = ctx.createRadialGradient(
+        bx - drawR * 0.32,
+        drawY - drawR * 0.35,
+        drawR * 0.12,
+        bx,
+        drawY,
+        drawR
+      );
+      grad.addColorStop(0, theme.ballColors[0]);
+      grad.addColorStop(0.55, theme.ballColors[1]);
+      grad.addColorStop(1, theme.ballColors[2]);
+
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(bx, drawY, drawR, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Specular rim
+      ctx.strokeStyle = 'rgba(255,255,255,0.22)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      // 5. Optional torchlight vignette for Temple theme
+      if (theme.torch) {
+        const vig = ctx.createRadialGradient(bx, drawY, cell * 1.1, bx, drawY, cell * 4.5);
+        vig.addColorStop(0, 'rgba(255, 170, 60, 0.08)');
+        vig.addColorStop(0.5, 'rgba(8, 10, 15, 0.45)');
+        vig.addColorStop(1, 'rgba(5, 6, 10, 0.88)');
+        ctx.fillStyle = vig;
+        ctx.fillRect(0, 0, W, H);
+      }
+    }
+
+    let last = performance.now();
+    function loop(now) {
+      const dt = Math.min(0.05, (now - last) / 1000);
+      last = now;
+      for (const inst of instances) {
+        inst.t += dt;
+        renderInstance(inst, dt);
+      }
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+  </script>
+</body>
+</html>
